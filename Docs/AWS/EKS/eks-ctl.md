@@ -64,3 +64,19 @@ eksctl delete
 ```sh
 eksctl delete cluster --name eks-cluster
 ```
+
+eksctl udpate cluster
+
+- [x] The eksctl update cluster command updates the cluster configuration, including the Kubernetes version, node group configuration, and cluster add-ons.
+
+```sh
+eksctl update cluster --name eks-cluster --region eu-west-2 --version 1.14
+```
+
+eksctl scale nodegroup
+
+- [x] The eksctl scale nodegroup command scales the node group, including the number of nodes, node type, and desired capacity.
+
+```sh
+eksctl scale nodegroup --cluster eks-cluster --name eks-nodegroup --nodes 3 --nodes-min 1 --nodes-max 4
+```
