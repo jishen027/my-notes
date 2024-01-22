@@ -23,12 +23,12 @@ jobs:
           node-version: 18
           cache: 'npm'
         
-      - name: cd into md-note directory
-        run: cd md-note
       - name: Install dependencies
         run: npm install 
+        working-directory: ./md-note
       - name: Build website
         run: npm run build
+        working-directory: ./md-note
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
