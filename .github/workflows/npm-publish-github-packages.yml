@@ -22,7 +22,9 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-
+         
+      - name: cd md-note
+        run: cd md-note
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build website
