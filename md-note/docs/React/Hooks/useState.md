@@ -8,6 +8,8 @@
 
   - useState is excuted when the component is rendered, and it will be called in the same order every time the component is rendered.
 
+  - if useState is changed, the component will be rendered again.
+
   ```javascript
   // react useState hook will be called in the same order every time the component is rendered, and it can not be called conditionally
   const [count, setCount] = useState(0); // called first
