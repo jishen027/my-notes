@@ -23,7 +23,7 @@ const config = {
   organizationName: 'jishen027', // Usually your GitHub org/user name.
   projectName: 'my-notes', // Usually your repo name.
   trailingSlash: false,
-  deploymentBranch: 'development',
+  deploymentBranch: 'main',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
