@@ -23,4 +23,26 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Check Out 
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with: 
+          node-version: "16"
+
+      - name: Build 
+        run: npm run build
+        env:
+          USE_SSH: false
+          GIT_USER: jishen027
+          GIT_PASS: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          CURRENT_BRANCH: main
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
+          clean: true
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} # The GitHub token to use for deployment.
