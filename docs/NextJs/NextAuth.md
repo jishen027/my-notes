@@ -1,4 +1,4 @@
-## Next Auth 
+# Next Auth 
 
 - 1. Install Next Auth
 ```bash

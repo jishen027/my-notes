@@ -1,4 +1,4 @@
-## Prompt Design
+# Prompt Design
 
 - Basic prompt design
 

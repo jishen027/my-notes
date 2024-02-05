@@ -1,4 +1,4 @@
-### Eloquent Mutators and Casting
+# Eloquent Mutators and Casting
 
 - Accessor 
 
