@@ -16,7 +16,7 @@ const config = {
   url: 'https://jishen027.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/my-notes/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -89,44 +89,44 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        // links: [
+        //   {
+        //     title: 'Docs',
+        //     items: [
+        //       {
+        //         label: 'Tutorial',
+        //         to: '/docs/intro',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'Community',
+        //     items: [
+        //       {
+        //         label: 'Stack Overflow',
+        //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+        //       },
+        //       {
+        //         label: 'Discord',
+        //         href: 'https://discordapp.com/invite/docusaurus',
+        //       },
+        //       {
+        //         label: 'Twitter',
+        //         href: 'https://twitter.com/docusaurus',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'More',
+        //     items: [
+        //       {
+        //         label: 'GitHub',
+        //         href: 'https://github.com/facebook/docusaurus',
+        //       },
+        //     ],
+        //   },
+        // ],
+        copyright: `Copyright © ${new Date().getFullYear()} Jeb Lee's Docs, build with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
