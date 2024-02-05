@@ -1,4 +1,5 @@
 ## Docker composer
+
 ```javascript
 docker run container_name/app_name
 
@@ -13,11 +14,12 @@ docker run ansible
 user docker composer run complex applications
 
 docker-compose.yml
+
 ```yml
 services:
   web:
     image: "contaimer_name/app"
-  database: 
+  database:
     image: "mongodb"
   messaging:
     image: "redis:alpine"
@@ -29,8 +31,8 @@ services:
 docker-compose up
 ```
 
-
 - docker run multiple applications
+
 ```cmd
 docker run -d --name=redis redis
 
@@ -44,8 +46,7 @@ docker run -d --name=worker worker
 ```
 
 - docker run --links
-link applications
-
+  link applications
 
 ```cmd
 docker run -d --name=redis redis
@@ -60,10 +61,11 @@ docker run -d --name=worker --link db:db --link redis:redis worker
 ```
 
 - docker compose
+
 ```yml
-redis: 
+redis:
   image: redis
-db: 
+db:
   image: postgres: 9.4
 vote:
   image: voting-app
@@ -72,14 +74,14 @@ vote:
   links:
     - redis
 
-result: 
+result:
   image: result-app
-  ports: 
+  ports:
     - 5001:80
   links:
     - db
 
-worker: 
+worker:
   image: worker
   links:
     - redis
@@ -87,15 +89,17 @@ worker:
 ```
 
 - run compose file
+
 ```cmd
 docker-conpose up
 ```
 
 ### Docker compose - build
+
 ```yml
-redis: 
+redis:
   image: redis
-db: 
+db:
   image: postgres: 9.4
 vote:
   build: ./vote
@@ -104,27 +108,28 @@ vote:
   links:
     - redis
 
-result: 
+result:
   build: ./result
-  ports: 
+  ports:
     - 5001:80
   links:
     - db
 
-worker: 
+worker:
   image: worker
   links:
     - redis
     - db
 ```
 
-
 ### Docker compose -version
+
 - version 1
+
 ```yml
-redis: 
+redis:
   image: redis
-db: 
+db:
   image: postgres: 9.4
 vote:
   build: ./vote
@@ -134,43 +139,45 @@ vote:
     - redis
 ```
 
-- version 2  
+- version 2
+
 ```yml
 version: 2
-services: 
-  redis: 
+services:
+  redis:
     image: redis
 
     networks:
       - back-end
-  db: 
+  db:
     image: postgres: 9.4
-    network: 
+    network:
       - backend-end
   vote:
     build: ./vote
-    network: 
+    network:
       - front-end
       - back-end
 
-  result: 
+  result:
     image: result
-    network: 
-      - front-end 
+    network:
+      - front-end
       - back-end
 
-networks: 
-  front-end: 
-  back-end: 
+networks:
+  front-end:
+  back-end:
 ```
 
 - version 3
+
 ```yml
 version: 3
-services: 
-  redis: 
+services:
+  redis:
     image: redis
-  db: 
+  db:
     image: postgres: 9.4
   vote:
     build: ./vote
@@ -178,6 +185,37 @@ services:
       - 5000:80
 ```
 
+## valuable commands
 
+```bash
+# clean workspace
 
+-docker container rm $(docker container ls -aq) # remove all containers
 
+-docker rmi $(docker images -q) # remove all images
+
+```
+
+```yml
+version: "3.8"
+services:
+  web:
+    build: ./frontend
+    ports:
+      - 3000:3000
+  api:
+    build: ./backend
+    ports:
+      - 3001:3001
+    environment:
+      - DB_URL: mongodb://db/db_name
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+```
