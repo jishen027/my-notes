@@ -1,4 +1,4 @@
-### EKSCTL
+# EKSCTL
 
 eksctl create
 
