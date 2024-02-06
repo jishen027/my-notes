@@ -1,4 +1,4 @@
-## Docker registry
+# Docker registry
 
 ```cmd
 docker run nginx

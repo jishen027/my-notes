@@ -1,4 +1,6 @@
-# Use mitt as eventBus in vue3 with Inject/Provide
+# EventBus in Vue3
+
+## Use mitt as eventBus in vue3 with Inject/Provide
 
 step1: install mitt
 

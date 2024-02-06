@@ -1,4 +1,4 @@
-## Docker composer
+# Docker composer
 
 ```javascript
 docker run container_name/app_name

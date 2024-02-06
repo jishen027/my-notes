@@ -1,3 +1,5 @@
+# React Redux Basic
+
 ## init Redux for React project
 1. install react-redux and @reduxjs/toolkit
 ```bash

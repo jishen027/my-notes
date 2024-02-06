@@ -1,4 +1,4 @@
-### Open/Close Principle
+# Open/Close Principle
 
 - Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.
 - In other words, you should be able to add new functionality to an object or method without altering it.

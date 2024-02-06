@@ -1,4 +1,4 @@
-## React Redux Async Thunk
+# React Redux Async Thunk
 
 ### Post Slice
 

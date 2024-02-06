@@ -1,4 +1,4 @@
-### Custom Hook
+# Custom Hook
 
 - A custom hook is a function that starts with the word use, and it can call other hooks if needed.
 

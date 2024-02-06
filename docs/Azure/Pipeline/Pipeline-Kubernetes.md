@@ -1,4 +1,4 @@
-# Azure pipeline for Kubernetes
+# Azure pipeline for Kubernetes(Digital Ocean)
 
 ## Introduction
 

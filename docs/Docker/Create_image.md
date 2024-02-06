@@ -1,4 +1,4 @@
-### How to create my own image
+# Create image
 
 1. create a docker file
 

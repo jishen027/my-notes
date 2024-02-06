@@ -1,4 +1,4 @@
-### Express Passport JS
+# Express Passport JS
 - [Passport JS](https://www.npmjs.com/package/passport)
 
 ### Passport JS

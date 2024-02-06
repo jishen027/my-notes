@@ -1,6 +1,6 @@
-@jishen027
+# SiteGround Symbolic link using SSH
 
-# How to create a symbolic link on [SiteGround.com](https://www.siteground.co.uk/web-hosting.htm) using SSH
+## How to create a symbolic link on [SiteGround.com](https://www.siteground.co.uk/web-hosting.htm) using SSH
 
 ## Step 1
 Using Siteground dev ssh tool to connect into the server

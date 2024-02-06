@@ -1,3 +1,5 @@
+# Cypress Fundamentals
+
 ### What is Cypress?
 
 - Cypress is a JavaScript End to End Testing Framework.

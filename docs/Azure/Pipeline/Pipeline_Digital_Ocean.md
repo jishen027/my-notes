@@ -1,4 +1,4 @@
-## Create Azure Pipeline for Digital Ocean using Docker and SSH
+# Create Azure Pipeline for Digital Ocean using Docker and SSH
 1. Login to Azure DevOps
 2. Create Azure_Pipeline.yml file for the project
 3. Add the following code to the file

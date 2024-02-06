@@ -1,4 +1,4 @@
-### Single Responsibility Principle
+# Single Responsibility Principle
 
 A class should have a singular focus, encompassing only one responsibility, job, purpose, or area of concern.
 

@@ -1,3 +1,5 @@
+# Webpack
+
 1. what is webpack?
 
 - webpack is a module bundler for modern JavaScript applications.
@@ -77,4 +79,3 @@
 5. babel-loader
 
 - babel-loader is the webpack loader responsible for taking in the ES6 code and making it understandable by the browser of choice of the user.
-

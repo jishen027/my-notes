@@ -1,4 +1,4 @@
-## Desgin an API for company client
+# Desgin an API for company client
 
 - create a credential for the client who using the API, and can only access the API using credential or API key.
 

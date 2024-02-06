@@ -1,4 +1,4 @@
-### automation using local dev server with siteground
+# Auto deploy from local dev server to SiteGround
 
 ## To create a bare git repo on site ground
 - Clone you repo with --bare tag

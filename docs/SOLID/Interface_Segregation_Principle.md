@@ -1,4 +1,4 @@
-### Interface Segregation Principle
+# Interface Segregation Principle
 
 - Clients should not be forced to depend upon interfaces that they do not use.
 - The interface-segregation principle (ISP) states that no client should be forced to depend on methods it does not use.

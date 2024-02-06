@@ -1,4 +1,4 @@
-### Liskov Substitution Principle
+# Liskov Substitution Principle
 
 - Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.
 - In other words, if S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program.
