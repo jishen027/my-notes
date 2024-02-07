@@ -60,49 +60,165 @@ const assistant = openai.beta.assistants.retrieve("assistant-id");
 
 ### Create a thread
 
+Create a new thread and run in the thread, when we start a new interaction with the assistant, we create a new thread and a run in the thread.
+
 ```js
-const thread = openai.beta.threads.create();
+const createThread = async (assistant_id) => {
+  // create a new thread
+  const thread = await openai.beta.threads.create({
+    assistantId: "assistant-id",
+  });
+
+  // create run in the thread
+  const run = await openai.beta.threads.run.create({
+    threadId: thread.id,
+    assistant_id: assistant_id,
+  });
+
+  const runStatus = {
+    threadId: thread.id,
+    runId: run.id,
+    status: run.status,
+    required_action: run.required_action,
+    last_error: run.last_error,
+  };
+
+  return runStatus;
+};
 ```
 
-### Create a message
+### Get the thread
 
 ```js
-const message = openai.beta.threads.messages.create({
-  role: "user",
-  content: "Hello, how are you?",
-});
+const getThread = async (thread_id) => {
+  const thread = await openai.beta.threads.retrieve(thread_id);
+  const result = {
+    id: thread.id,
+    status: thread.status,
+    messages: thread.messages,
+  };
+
+  return result;
+};
 ```
 
-### Run assistant
+### Post a message to the thread
 
 ```js
-const run = await openai.beta.assistants.run({
-  assistantId: "assistant-id",
-  // optional parameters
-  instructions:
-    "Translate the following text into French: 'Hello, how are you?'",
-});
+const postMessage = async (thread_id, message) => {
+  try{
+    await openai.beta.threads.messages.create({
+      threadId: thread_id,
+      role: "user",
+      content: message,
+    });
 
-console.log(run.data); // { id: 'message-id', content: 'Bonjour, comment ça va?' }
+    const run = await openai.beta.threads.run.create({
+      threadId: thread_id,
+      assistant_id: "assistant-id",
+    });
+
+    return runStatus{
+      threadId: thread_id,
+      runId: run.id,
+      status: run.status,
+      required_action: run.required_action,
+      last_error: run.last_error,
+    };
+  }
+};
 ```
 
-### Get the result
+### Get run status
 
 ```js
-const result = openai.beta.assistants.retrieve("assistant-id");
+const getRunStatus = async (thread_id, run_id) => {
+  try {
+    const run = await openai.beta.threads.run.retrieve(thread_id, run_id);
+    const runStatus = {
+      threadId: thread_id,
+      runId: run.id,
+      status: run.status,
+      required_action: run.required_action,
+      last_error: run.last_error,
+    };
+    return runStatus;
+  } catch (err) {
+    console.log(err);
+  }
+};
 ```
 
-### Thread run
+### Get the message
+
+get the thread will return the messages in the thread, and we can get the message by the message id.
 
 ```js
-const run = openai.beta.threads.run.retrieve("thread-id", "run-id");
+const getMessage = async (thread_id, message_id) => {
+  const message = await openai.beta.threads.messages.retrieve(
+    thread_id,
+    message_id
+  );
+  const result = {
+    id: message.id,
+    role: message.role,
+    content: message.content,
+  };
 
-console.log(run.data); // { id: 'message-id', content: 'Bonjour, comment ça va?' }
+  return result;
+};
+```
 
-// retrieve the thread
-const messages= awai openai.beta.threads.messages.list("thread-id");
+## Frontend(React) Integration
 
-console.log(messages.data);
+To integrate the OpenAI Assistant model into a React application, you can use the official OpenAI JavaScript client library. You can use the library to interact with the OpenAI API and use the Assistant model to generate human-like text in response to user input.
+
+Here is an example of how you can use the OpenAI JavaScript client library to integrate the Assistant model into a React application:
+
+```js
+import React, { useState, useEffect } from "react";
+import openai from "openai";
+
+const client = new openai.Client({ apiKey });
+
+// setup Intervel to get the thread status
+const getThreadStatus = (thread_id, run_id) => {
+  const interval = setInterval(async () => {
+    const runStatus = await getRunStatus(thread_id, run_id);
+    if (runStatus.status === "complete") {
+      clearInterval(interval);
+      // get the message
+      const message = await getMessage(thread_id, runStatus.message_id);
+      // update the state with the message
+      setMessage(message.content);
+    }
+  }, 1000);
+};
+
+const App = () => {
+  const [message, setMessage] = useState("");
+  const [threadId, setThreadId] = useState("");
+  const [runId, setRunId] = useState("");
+
+  const handleSendMessage = async (message) => {
+    // post the message to the thread
+    const runStatus = await postMessage(threadId, message);
+    setRunId(runStatus.runId);
+    getThreadStatus(threadId, runStatus.runId);
+  };
+
+  return (
+    <div>
+      <h1>OpenAI Assistant</h1>
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button onClick={() => handleSendMessage(message)}>Send</button>
+    </div>
+  );
+};
 ```
 
 ## Conclusion
