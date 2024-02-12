@@ -35,6 +35,10 @@ export async function getPosts() {
 
 The example above is use module level server action. this function will run on the server side.
 
+### Important
+
+If use server action in client component, the return value from server action has to be `plain object` (`JSON`).
+
 ## Why we use server action ?
 
 1. Less code
