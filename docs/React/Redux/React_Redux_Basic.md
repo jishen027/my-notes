@@ -6,7 +6,7 @@
 npm install @reduxjs/toolkit react-redux
 ```
 
-2. create store
+2. create store at src/store.js
 ```javascript
 import { configureStore } from '@reduxjs/toolkit'
 
@@ -28,7 +28,7 @@ ReactDOM.render(
 )
 ```
 
-4. create slice
+4. create slice for counter at src/features/counter/counterSlice.js
 ```javascript
 import { createSlice } from '@reduxjs/toolkit'
 
@@ -60,6 +60,7 @@ export const { increment, decrement, incrementByAmount } = counterSlice.actions
 
 export default counterSlice.reducer
 ```
+
 5. add slice to store
 ```javascript
 import { configureStore } from '@reduxjs/toolkit'
@@ -155,4 +156,9 @@ export const postsSlice = createSlice({
     },
   },
 })
+
+
+export const { addPost, postsLoading, postsReceived, postsFailed } = postsSlice.actions
+
+export default postsSlice.reducer
 ```
