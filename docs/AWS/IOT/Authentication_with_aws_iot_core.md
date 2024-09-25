@@ -109,11 +109,122 @@ AWS Cognito is a user authentication service that allows you to authenticate use
 
 ## Service Role for AWS IoT Core
 
-To authenticate with AWS IoT Core, you need to create a service role for AWS IoT Core. The service role is used to authenticate the device to AWS IoT Core. The service role has permissions to access AWS IoT Core.
-
 If you service is running on EKS, you can use the IAM role for service account to authenticate with AWS IoT Core.
 
-1. Create a service role for AWS IoT Core.
-2. Attach the AWS managed policy `AWSIoTFullAccess` to the service role.
-3. Create a service account for the service running on EKS.
-4. Attach the service role to the service account.
+To authenticate with AWS IoT Core, you need to create a service role for AWS IoT Core. The service role is used to authenticate the device to AWS IoT Core. The service role has permissions to access AWS IoT Core.
+
+1. Create a service role for AWS IoT Core. you will need a oidc provider for the EKS cluster first, then you can create a service role for the EKS cluster.
+
+```python
+# Create a service role for AWS IoT Core
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.68.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "xxxx"
+}
+
+data "aws_caller_identity" "current" {}
+
+# create policy
+resource "aws_iam_policy" "tf_provision_service_role_policy" {
+  name        = "tf-provision-service-role-policy"
+  description = "Policy for the service role"
+  policy      = file("policies/service-role-policy.json")
+}
+
+# Create role
+resource "aws_iam_role" "tf_provision_service_role" {
+  name = "tf-provision-service-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/oidc.eks.${var.region}.amazonaws.com/id/${var.eks_cluster_id}"
+        }
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Condition = {
+          StringEquals = {
+            "oidc.eks.${var.region}.amazonaws.com/id/${var.eks_cluster_id}:sub" = "system:serviceaccount:${var.namespace}:${var.service_account_name}"
+          }
+        }
+      }
+    ]
+  })
+}
+
+# Attach policy to role
+resource "aws_iam_role_policy_attachment" "tf_provision_service_role_policy_attachment" {
+  role       = aws_iam_role.tf_provision_service_role.name
+  policy_arn = aws_iam_policy.tf_provision_service_role_policy.arn
+}
+
+output "role_arn" {
+  value = aws_iam_role.tf_provision_service_role.arn
+}
+
+output "policy_arn" {
+  value = aws_iam_policy.tf_provision_service_role_policy.arn
+}
+```
+
+```json
+// Service role policy
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iot:*",
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+2. Create a service account for the service running on EKS.
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: test-service-account
+  namespace: default
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{your_aws_id}:role/tf-provision-service-role
+```
+
+run the following command to create the service account.
+
+```bash
+kubectl apply -f service-account.yaml
+```
+
+3. Create a pod that uses the service account.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod
+spec:
+  serviceAccountName: test-service-account
+  containers:
+    - name: test-container
+      image: nginx
+```
+
+run the following command to create the pod.
+
+```bash
+kubectl apply -f pod.yaml
+```
