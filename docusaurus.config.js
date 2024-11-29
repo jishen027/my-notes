@@ -46,14 +46,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/jishen027/my-notes/tree/main/docs/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/jishen027/my-notes/tree/main/blogs/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -71,7 +71,7 @@ const config = {
         title: 'Jeb\'s Notes',
         logo: {
           alt: 'My Site Logo',
-          src: 'https://avatars.githubusercontent.com/u/32628248?v=4',
+          src: 'https://avatars.githubusercontent.com/u/32628248?v=4&size=64',
         },
         items: [
           {
