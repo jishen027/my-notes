@@ -17,7 +17,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 - Copy the `Greet.proto` file from gRPC server to here.(gRPC server and clinet use a same proto file)
 - add namespace to the file 
 ```json
-options csharp_namespace = "GrpcGreeterClient"
+option csharp_namespace = "GrpcGreeterClient"
 ```
 
 ## Add `<Protobuf>` element to `<ItemGroup>` in the `.csproj` file.
