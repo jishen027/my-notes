@@ -27,3 +27,10 @@
    - [x] VPC Endpoints: A way to privately connect your VPC to supported AWS services and VPC endpoint services powered by AWS PrivateLink.
    - [x] NAT Gateway: A highly available, managed Network Address Translation (NAT) service for your resources in a private subnet to access the internet.
    - [x] VPC Flow Logs: A feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC.
+
+### IP addresses
+
+- CIDR(Classless Inter-Domain Routing)
+/32 = 1, /24 = 256
+
+
