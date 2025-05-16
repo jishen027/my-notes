@@ -2,6 +2,16 @@ import React from 'react'
 import styles from './styles.module.css';
 
 const CustomHome = () => {
+  const handleExploreNotes = () => {
+    // Navigate to notes section
+    window.location.href = '/my-notes/docs/AWS/Amplify';
+  };
+
+  const handleLearnMore = () => {
+    // Show more information about the app
+    window.location.href = '/my-notes/docs/AWS/Certificates/Developer/EC2';
+  };
+
   return (
     <div className={styles.container}>
       <section className={styles.hero}>
@@ -9,8 +19,18 @@ const CustomHome = () => {
           <h1 className={styles.heroTitle}>Welcome to Jeb's Notes</h1>
           <p className={styles.heroSubtitle}>A modern knowledge base for technical notes and thoughts</p>
           <div className={styles.ctaButtons}>
-            <button className={styles.primaryButton}>Explore Notes</button>
-            <button className={styles.secondaryButton}>Learn More</button>
+            <button
+              className={styles.primaryButton}
+              onClick={handleExploreNotes}
+            >
+              Explore Notes
+            </button>
+            <button
+              className={styles.secondaryButton}
+              onClick={handleLearnMore}
+            >
+              Learn More
+            </button>
           </div>
         </div>
       </section>
