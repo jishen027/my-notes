@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">01 AWS Networking Basics | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://jishen027.github.io/my-notes/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://jishen027.github.io/my-notes/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="01 AWS Networking Basics | My Site"><meta data-rh="true" name="description" content="AWS Networking Services"><meta data-rh="true" property="og:description" content="AWS Networking Services"><link data-rh="true" rel="icon" href="/my-notes/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic"><link data-rh="true" rel="alternate" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic" hreflang="en"><link data-rh="true" rel="alternate" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic" hreflang="x-default"><link rel="stylesheet" href="/my-notes/assets/css/styles.a0eaaa03.css">
-<script src="/my-notes/assets/js/runtime~main.845fb83c.js" defer="defer"></script>
+<script src="/my-notes/assets/js/runtime~main.d1089ecf.js" defer="defer"></script>
 <script src="/my-notes/assets/js/main.f5f5bf43.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -93,9 +93,9 @@
 <li>class B 205.0.125.100, network : 205.0, host : 125.100.</li>
 <li>class C 205.0.125.100, network : 205.0.125, host : 100.</li>
 </ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="subnet-mast">Subnet mast<a href="#subnet-mast" class="hash-link" aria-label="Direct link to Subnet mast" title="Direct link to Subnet mast">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="subnet-mask">Subnet mask<a href="#subnet-mask" class="hash-link" aria-label="Direct link to Subnet mask" title="Direct link to Subnet mask">​</a></h3>
 <p>For determine the number of IP address by given local network requires based on the default subnetwork.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="accessubg-data">Accessubg data<a href="#accessubg-data" class="hash-link" aria-label="Direct link to Accessubg data" title="Direct link to Accessubg data">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="accessing-data">Accessing data<a href="#accessing-data" class="hash-link" aria-label="Direct link to Accessing data" title="Direct link to Accessing data">​</a></h4>
 <ul>
 <li>Network attached storage(NAS): Elastic file system, Amazon FSx.</li>
 <li>Storage area network(SAM): Amazon Elastic Block Storage(EBS).</li>
@@ -122,6 +122,106 @@ TCP</p>
 HTTP</p>
 </li>
 </ol>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="aws-network-connectivity-options">AWS Network Connectivity Options<a href="#aws-network-connectivity-options" class="hash-link" aria-label="Direct link to AWS Network Connectivity Options" title="Direct link to AWS Network Connectivity Options">​</a></h2></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/jishen027/my-notes/tree/main/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/00ComputeService"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">00 Cloud Computing</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/ExamPrepAssociate"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">AWS Solution Architecture Associate Exam Prep</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#aws-networking-services" class="table-of-contents__link toc-highlight">AWS Networking Services</a><ul><li><a href="#network-foundations" class="table-of-contents__link toc-highlight">Network foundations</a></li><li><a href="#hybird-connectivity" class="table-of-contents__link toc-highlight">Hybird connectivity</a></li><li><a href="#edge-networking" class="table-of-contents__link toc-highlight">Edge networking</a></li><li><a href="#application-networking" class="table-of-contents__link toc-highlight">Application networking</a></li><li><a href="#networking-security" class="table-of-contents__link toc-highlight">Networking security</a></li></ul></li><li><a href="#network-concepts" class="table-of-contents__link toc-highlight">Network Concepts</a><ul><li><a href="#network-design-pattern" class="table-of-contents__link toc-highlight">Network design pattern</a></li><li><a href="#protocol" class="table-of-contents__link toc-highlight">Protocol</a></li><li><a href="#ipv4" class="table-of-contents__link toc-highlight">IPv4</a></li><li><a href="#ipv6" class="table-of-contents__link toc-highlight">IPv6</a></li></ul></li><li><a href="#classless-inter-domain-routing-cidr" class="table-of-contents__link toc-highlight">Classless Inter-Domain Routing (CIDR)</a><ul><li><a href="#subnetting" class="table-of-contents__link toc-highlight">Subnetting</a></li><li><a href="#subnet-mast" class="table-of-contents__link toc-highlight">Subnet mast</a></li></ul></li><li><a href="#aws-implementation" class="table-of-contents__link toc-highlight">AWS Implementation</a><ul><li><a href="#open-systems-interconnectosi-model" class="table-of-contents__link toc-highlight">Open Systems Interconnect(OSI) model</a></li><li><a href="#tcpip" class="table-of-contents__link toc-highlight">TCP/IP</a></li></ul></li><li><a href="#aws-network-connectivity-options" class="table-of-contents__link toc-highlight">AWS Network Connectivity Options</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Jeb Lee's Docs, build with Docusaurus.</div></div></div></footer></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="aws-network-connectivity-options">AWS Network Connectivity Options<a href="#aws-network-connectivity-options" class="hash-link" aria-label="Direct link to AWS Network Connectivity Options" title="Direct link to AWS Network Connectivity Options">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="understant-connectivity-concepts">Understant Connectivity Concepts<a href="#understant-connectivity-concepts" class="hash-link" aria-label="Direct link to Understant Connectivity Concepts" title="Direct link to Understant Connectivity Concepts">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="multi-tier-architecture">Multi-tier architecture<a href="#multi-tier-architecture" class="hash-link" aria-label="Direct link to Multi-tier architecture" title="Direct link to Multi-tier architecture">​</a></h4>
+<ul>
+<li>Presentation tier</li>
+<li>Application or logic tier</li>
+<li>Data tier</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="multi-vpc-architecture">Multi-VPC architecture<a href="#multi-vpc-architecture" class="hash-link" aria-label="Direct link to Multi-VPC architecture" title="Direct link to Multi-VPC architecture">​</a></h4>
+<p>For Create connections between application for distributed applications</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="hight-avaliability">Hight avaliability<a href="#hight-avaliability" class="hash-link" aria-label="Direct link to Hight avaliability" title="Direct link to Hight avaliability">​</a></h4>
+<p>A network that is designed to avoid loss of communications between established network endpoints.</p>
+<p>by implementation of :</p>
+<ul>
+<li>redeundant components</li>
+<li>parallel components</li>
+<li>distribute traffic load</li>
+<li>elimination of single point of faliure</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="hybrid-networks">Hybrid networks<a href="#hybrid-networks" class="hash-link" aria-label="Direct link to Hybrid networks" title="Direct link to Hybrid networks">​</a></h4>
+<p>At least two indepentdent networks communicate with each other.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="high-performance">high performance<a href="#high-performance" class="hash-link" aria-label="Direct link to high performance" title="Direct link to high performance">​</a></h4>
+<p>Privide fastest experience by guiding a packet of data along the shortest path with minimal delay.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="understant-aws-network-service-offerings">Understant AWS Network Service Offerings<a href="#understant-aws-network-service-offerings" class="hash-link" aria-label="Direct link to Understant AWS Network Service Offerings" title="Direct link to Understant AWS Network Service Offerings">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="virtual-private-cloudvpc-endpoint-and-aws-privatelink">Virtual private cloud(VPC) endpoint and AWS PrivateLink<a href="#virtual-private-cloudvpc-endpoint-and-aws-privatelink" class="hash-link" aria-label="Direct link to Virtual private cloud(VPC) endpoint and AWS PrivateLink" title="Direct link to Virtual private cloud(VPC) endpoint and AWS PrivateLink">​</a></h4>
+<ul>
+<li>
+<p>Gateway VPC endpoints</p>
+<p>A gateway VPC endpoint targets specific IP routes in a VPC route table in the from of a prefix list.
+<img loading="lazy" alt="Gateway VPC endpoint" src="/my-notes/assets/images/image-31efa57710403287f2d5d31941ae5d4b.png" width="1219" height="715" class="img_ev3q"></p>
+</li>
+<li>
+<p>Interface endpoints</p>
+<p>Powered by privateLink, an interface endpoint is an elastic network interface with a private IP address from the IP address range of the subnet. as an entry point for traffic.</p>
+</li>
+<li>
+<p>Gateway Load Balancer endpoint</p>
+<p>A gateway load balancer endpoint is an elastic network interface with a private IP address from the IP address range of the subnet.traffic and route it to a service that configured using Gateway Load balancer.</p>
+</li>
+<li>
+<p>What is AWS PrivateLink</p>
+</li>
+</ul>
+<p><img loading="lazy" alt="PrivateLink" src="/my-notes/assets/images/image-1-d00de67d804c8af8234e4e2de550d5f6.png" width="1109" height="479" class="img_ev3q"></p>
+<ol>
+<li>Provite connection between VPCs and supported AWS Services.</li>
+<li>Avoids exposing traffic to the public internet.</li>
+</ol>
+<p>Benefits :</p>
+<ol>
+<li>Security</li>
+<li>Simplification</li>
+<li>Capabilities</li>
+</ol>
+<p>Considerations :</p>
+<ol>
+<li>Does not support IPv6.</li>
+<li>Service Provider will never see the IP address of the customer or service consumer.</li>
+<li>Endpoint services cannot be tagged.</li>
+<li>The private Domain Name System (DNS) of the endpoint does not resolve outside of the VPC.</li>
+<li>Availability Zone names in a customer account might not map to the same locations as Availability Zone names in another account.</li>
+</ol>
+<ul>
+<li>DNS
+DNS Will be created for interface endpoint.</li>
+</ul>
+<ol>
+<li>
+<p>Endpoint-specific regional DNS hostname.</p>
+<p>vpce-0fe5b17a0707d6abc-29p5708s.ec2.us-east-1.vpce.amazonaws.com</p>
+</li>
+<li>
+<p>Zonal-specific DNS hostname.(include avaliable zone)</p>
+<p>vpce-0fe5b17a0707d6abc-29p5708s-us-east-1a.ec2.us-east-1.vpce.amazonaws.com</p>
+</li>
+<li>
+<p>Private DNS hostname.</p>
+<p>Create for zonal-specific or regional-specific DNS into a friendly hostname.</p>
+<p>myservice.example.com</p>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vpc-peering">VPC peering<a href="#vpc-peering" class="hash-link" aria-label="Direct link to VPC peering" title="Direct link to VPC peering">​</a></h4>
+<p>A network connection between two VPCs and route traffic privately.</p>
+<ul>
+<li>Benefits :</li>
+</ul>
+<ol>
+<li>Highly avaliable.</li>
+<li>does not relay on a separate pice of physical hardware.</li>
+<li>no bandwidth bottleneck or single point of failure of communication.</li>
+</ol>
+<ul>
+<li>Peering scenarios</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="aws-direct-connect">AWS Direct Connect<a href="#aws-direct-connect" class="hash-link" aria-label="Direct link to AWS Direct Connect" title="Direct link to AWS Direct Connect">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="aws-site-to-site-vpn-and-aws-client-vpn">AWS Site-to-Site VPN and AWS Client VPN<a href="#aws-site-to-site-vpn-and-aws-client-vpn" class="hash-link" aria-label="Direct link to AWS Site-to-Site VPN and AWS Client VPN" title="Direct link to AWS Site-to-Site VPN and AWS Client VPN">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="aws-transit-gateway">AWS Transit Gateway<a href="#aws-transit-gateway" class="hash-link" aria-label="Direct link to AWS Transit Gateway" title="Direct link to AWS Transit Gateway">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="hub-and-spoke">Hub and Spoke<a href="#hub-and-spoke" class="hash-link" aria-label="Direct link to Hub and Spoke" title="Direct link to Hub and Spoke">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="hybird-network">Hybird network<a href="#hybird-network" class="hash-link" aria-label="Direct link to Hybird network" title="Direct link to Hybird network">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="cross-regional-vpc-peering">Cross-regional VPC peering<a href="#cross-regional-vpc-peering" class="hash-link" aria-label="Direct link to Cross-regional VPC peering" title="Direct link to Cross-regional VPC peering">​</a></h4>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="exploring-design-patterns">Exploring Design Patterns<a href="#exploring-design-patterns" class="hash-link" aria-label="Direct link to Exploring Design Patterns" title="Direct link to Exploring Design Patterns">​</a></h3></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/jishen027/my-notes/tree/main/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/00ComputeService"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">00 Cloud Computing</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/ExamPrepAssociate"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">AWS Solution Architecture Associate Exam Prep</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#aws-networking-services" class="table-of-contents__link toc-highlight">AWS Networking Services</a><ul><li><a href="#network-foundations" class="table-of-contents__link toc-highlight">Network foundations</a></li><li><a href="#hybird-connectivity" class="table-of-contents__link toc-highlight">Hybird connectivity</a></li><li><a href="#edge-networking" class="table-of-contents__link toc-highlight">Edge networking</a></li><li><a href="#application-networking" class="table-of-contents__link toc-highlight">Application networking</a></li><li><a href="#networking-security" class="table-of-contents__link toc-highlight">Networking security</a></li></ul></li><li><a href="#network-concepts" class="table-of-contents__link toc-highlight">Network Concepts</a><ul><li><a href="#network-design-pattern" class="table-of-contents__link toc-highlight">Network design pattern</a></li><li><a href="#protocol" class="table-of-contents__link toc-highlight">Protocol</a></li><li><a href="#ipv4" class="table-of-contents__link toc-highlight">IPv4</a></li><li><a href="#ipv6" class="table-of-contents__link toc-highlight">IPv6</a></li></ul></li><li><a href="#classless-inter-domain-routing-cidr" class="table-of-contents__link toc-highlight">Classless Inter-Domain Routing (CIDR)</a><ul><li><a href="#subnetting" class="table-of-contents__link toc-highlight">Subnetting</a></li><li><a href="#subnet-mask" class="table-of-contents__link toc-highlight">Subnet mask</a></li></ul></li><li><a href="#aws-implementation" class="table-of-contents__link toc-highlight">AWS Implementation</a><ul><li><a href="#open-systems-interconnectosi-model" class="table-of-contents__link toc-highlight">Open Systems Interconnect(OSI) model</a></li><li><a href="#tcpip" class="table-of-contents__link toc-highlight">TCP/IP</a></li></ul></li><li><a href="#aws-network-connectivity-options" class="table-of-contents__link toc-highlight">AWS Network Connectivity Options</a><ul><li><a href="#understant-connectivity-concepts" class="table-of-contents__link toc-highlight">Understant Connectivity Concepts</a></li><li><a href="#understant-aws-network-service-offerings" class="table-of-contents__link toc-highlight">Understant AWS Network Service Offerings</a></li><li><a href="#exploring-design-patterns" class="table-of-contents__link toc-highlight">Exploring Design Patterns</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Jeb Lee's Docs, build with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
