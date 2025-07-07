@@ -212,9 +212,91 @@ A network connection between two VPCs and route traffic privately.
 
 - Peering scenarios
 
+1. Full Sharing of resources between all VPCs
+   ![FullSharing](image-2.png)
+2. Partial sharing of centralized resources
+   ![PartialSharing](image-3.png)
+
+- Non-valid peering configurations
+
+1. Overlappiong CIDR blocks
+2. Transitive peering
+3. Edge-to-edge routing through a gateway or private connection
+
+If either VPC in a peering relationship has one of the following connections, you cannot extend the peering relationship to that connection:
+
+A VPN connection or a Direct Connect connection to a corporate network
+An internet connection through an internet gateway
+
+An internet connection in a private subnet through a NAT device
+
+A gateway VPC endpoint to an AWS service, for example, an endpoint to Amazon S3
+
 #### AWS Direct Connect
 
+Direct connection privides a private, reliable connection to AWS private data center or office.
+
+- Speed
+
+1. All connections must be decicated connections and have a port speed of 1Gbps, 10 Gbps, 100Gbps.
+
+2. All connection in the LAG must use the same bandwidth.
+
+3. A LAG can have maximum of two 100-Gpbs connections or 4 connection port speed less than 100-Gpbs.
+
+4. All connection in the LAG must terminate at the same Direct Connect endpoint.
+
+5. when Create a LAG, you can download the letter of Aithorization and connecting Facility Assignment(LOA-CFA) for each physical connection.
+
+- Network Requirement
+
+1. Your network is co-located with an existing Direct connect location.
+   ![co-location](image-4.png)
+2. You are working with a Direct Connect Partner.
+   ![partner](image-5.png)
+3. You are working with an independent service provider to connect to Direct Connect.
+
 #### AWS Site-to-Site VPN and AWS Client VPN
+
+- Enables you to securely connect your on-premises network to Amazon VPC.
+- Enables you to securely connect users to AWS or on-premises network.
+  ![VPN](image-6.png)
+
+- Gateways
+
+1. Customer gateway
+
+   A resource you create and configred in AWS that represents your on-premise gateway device.
+
+2. Customer gateway device
+
+   A customer gateway device is a physical device or software application on your side of the AWS Site-to-Site VPN connection.
+
+3. Virtual private gateway
+
+   A virtual private gateway is the VPN connector on the Amazon side.
+
+4. Transit gateway
+
+   A transit gateway is a transit hub that can be used to interconnect your VPCs and on-premises network.
+
+- Limitations
+
+  1.  IPv6 traffic is partially supported.(IPv6 outter tunnel connection not supported)
+
+  2.  Does not support Path MTU discovery.
+
+  3.  Maximum packets per second(PPS) per VPN tunnel is 140,000.
+
+  4.  ...
+
+- Monitoring
+
+  Use Cloud Watch, not support AWS Classic VPN connections.
+
+- Client VPN
+
+   
 
 #### AWS Transit Gateway
 
