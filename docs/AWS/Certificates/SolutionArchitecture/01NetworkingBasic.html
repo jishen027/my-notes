@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">01 AWS Networking Basics | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://jishen027.github.io/my-notes/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://jishen027.github.io/my-notes/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="01 AWS Networking Basics | My Site"><meta data-rh="true" name="description" content="AWS Networking Services"><meta data-rh="true" property="og:description" content="AWS Networking Services"><link data-rh="true" rel="icon" href="/my-notes/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic"><link data-rh="true" rel="alternate" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic" hreflang="en"><link data-rh="true" rel="alternate" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/01NetworkingBasic" hreflang="x-default"><link rel="stylesheet" href="/my-notes/assets/css/styles.a0eaaa03.css">
-<script src="/my-notes/assets/js/runtime~main.d1089ecf.js" defer="defer"></script>
+<script src="/my-notes/assets/js/runtime~main.afe4fd76.js" defer="defer"></script>
 <script src="/my-notes/assets/js/main.f5f5bf43.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -216,8 +216,114 @@ DNS Will be created for interface endpoint.</li>
 <ul>
 <li>Peering scenarios</li>
 </ul>
+<ol>
+<li>Full Sharing of resources between all VPCs
+<img loading="lazy" alt="FullSharing" src="/my-notes/assets/images/image-2-44fd9886fba377afd407e3417bff1c12.png" width="681" height="379" class="img_ev3q"></li>
+<li>Partial sharing of centralized resources
+<img loading="lazy" alt="PartialSharing" src="/my-notes/assets/images/image-3-8fd702248e3fa555de1c7087eed7822b.png" width="667" height="365" class="img_ev3q"></li>
+</ol>
+<ul>
+<li>Non-valid peering configurations</li>
+</ul>
+<ol>
+<li>Overlappiong CIDR blocks</li>
+<li>Transitive peering</li>
+<li>Edge-to-edge routing through a gateway or private connection</li>
+</ol>
+<p>If either VPC in a peering relationship has one of the following connections, you cannot extend the peering relationship to that connection:</p>
+<p>A VPN connection or a Direct Connect connection to a corporate network
+An internet connection through an internet gateway</p>
+<p>An internet connection in a private subnet through a NAT device</p>
+<p>A gateway VPC endpoint to an AWS service, for example, an endpoint to Amazon S3</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="aws-direct-connect">AWS Direct Connect<a href="#aws-direct-connect" class="hash-link" aria-label="Direct link to AWS Direct Connect" title="Direct link to AWS Direct Connect">​</a></h4>
+<p>Direct connection privides a private, reliable connection to AWS private data center or office.</p>
+<ul>
+<li>Speed</li>
+</ul>
+<ol>
+<li>
+<p>All connections must be decicated connections and have a port speed of 1Gbps, 10 Gbps, 100Gbps.</p>
+</li>
+<li>
+<p>All connection in the LAG must use the same bandwidth.</p>
+</li>
+<li>
+<p>A LAG can have maximum of two 100-Gpbs connections or 4 connection port speed less than 100-Gpbs.</p>
+</li>
+<li>
+<p>All connection in the LAG must terminate at the same Direct Connect endpoint.</p>
+</li>
+<li>
+<p>when Create a LAG, you can download the letter of Aithorization and connecting Facility Assignment(LOA-CFA) for each physical connection.</p>
+</li>
+</ol>
+<ul>
+<li>Network Requirement</li>
+</ul>
+<ol>
+<li>Your network is co-located with an existing Direct connect location.
+<img loading="lazy" alt="co-location" src="/my-notes/assets/images/image-4-85071e1449be2a5baccc7113d8ff082e.png" width="804" height="334" class="img_ev3q"></li>
+<li>You are working with a Direct Connect Partner.
+<img loading="lazy" alt="partner" src="/my-notes/assets/images/image-5-a08bbc0bd2c26af337f4cbb3e3719386.png" width="798" height="312" class="img_ev3q"></li>
+<li>You are working with an independent service provider to connect to Direct Connect.</li>
+</ol>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="aws-site-to-site-vpn-and-aws-client-vpn">AWS Site-to-Site VPN and AWS Client VPN<a href="#aws-site-to-site-vpn-and-aws-client-vpn" class="hash-link" aria-label="Direct link to AWS Site-to-Site VPN and AWS Client VPN" title="Direct link to AWS Site-to-Site VPN and AWS Client VPN">​</a></h4>
+<ul>
+<li>
+<p>Enables you to securely connect your on-premises network to Amazon VPC.</p>
+</li>
+<li>
+<p>Enables you to securely connect users to AWS or on-premises network.
+<img loading="lazy" alt="VPN" src="/my-notes/assets/images/image-6-61b27e9d1ba7e3144dce8697436ef1db.png" width="1103" height="567" class="img_ev3q"></p>
+</li>
+<li>
+<p>Gateways</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>Customer gateway</p>
+<p>A resource you create and configred in AWS that represents your on-premise gateway device.</p>
+</li>
+<li>
+<p>Customer gateway device</p>
+<p>A customer gateway device is a physical device or software application on your side of the AWS Site-to-Site VPN connection.</p>
+</li>
+<li>
+<p>Virtual private gateway</p>
+<p>A virtual private gateway is the VPN connector on the Amazon side.</p>
+</li>
+<li>
+<p>Transit gateway</p>
+<p>A transit gateway is a transit hub that can be used to interconnect your VPCs and on-premises network.</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Limitations</p>
+<ol>
+<li>
+<p>IPv6 traffic is partially supported.(IPv6 outter tunnel connection not supported)</p>
+</li>
+<li>
+<p>Does not support Path MTU discovery.</p>
+</li>
+<li>
+<p>Maximum packets per second(PPS) per VPN tunnel is 140,000.</p>
+</li>
+<li>
+<p>...</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Monitoring</p>
+<p>Use Cloud Watch, not support AWS Classic VPN connections.</p>
+</li>
+<li>
+<p>Client VPN</p>
+</li>
+</ul>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="aws-transit-gateway">AWS Transit Gateway<a href="#aws-transit-gateway" class="hash-link" aria-label="Direct link to AWS Transit Gateway" title="Direct link to AWS Transit Gateway">​</a></h4>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="hub-and-spoke">Hub and Spoke<a href="#hub-and-spoke" class="hash-link" aria-label="Direct link to Hub and Spoke" title="Direct link to Hub and Spoke">​</a></h4>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="hybird-network">Hybird network<a href="#hybird-network" class="hash-link" aria-label="Direct link to Hybird network" title="Direct link to Hybird network">​</a></h4>
