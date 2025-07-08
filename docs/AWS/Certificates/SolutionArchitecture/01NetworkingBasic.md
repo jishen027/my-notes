@@ -141,7 +141,7 @@ by implementation of :
 
 At least two indepentdent networks communicate with each other.
 
-#### high performance
+#### High performance
 
 Privide fastest experience by guiding a packet of data along the shortest path with minimal delay.
 
@@ -377,3 +377,25 @@ AWS Transit Gateway is a highly avaliable and scalable service that provide inte
 #### Cross-regional VPC peering
 
 ### Exploring Design Patterns
+
+#### Simplifying Multi-VPC Routing
+
+- Before
+  ![before](image-10.png)
+- After
+  ![After](image-11.png)
+
+#### Resilient Hybird Networks
+
+- Before
+  ![Before](image-12.png)
+- After
+  ![After](image-13.png)
+
+#### Regional High Avaliability
+
+![Regional High Avaliability](image-14.png)
+
+#### AWS Transit Gateway Peering
+
+![Transit Gateway Peering](image-15.png)
