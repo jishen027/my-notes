@@ -143,3 +143,69 @@ Lambda invokes your function in an execution environment, which is a secure and 
   3. Add code to check for and reuse existing connections
   4. Use tmp space as transient cache
   5. Check that background processes have completed.
+
+## AWS Lambda Function Permissions
+
+With Lambda functions, there are two sides that define the necessary scope of permissions – permission to invoke the function, and permission of the Lambda function itself to act upon other services.
+
+![Lambda Function Permissions](image-24.png)
+
+![IAM Execution Roles](image-25.png)
+
+### Execution role
+
+The execution role gives your function permissions to interact with other services.
+
+Example : Execution role definitions
+
+- IAM policy
+
+```json
+"Version": "2012-10-17",
+  "Statement" : [
+    {
+      "Sid": "Allow PutItem in table/test",
+      "Effect": "Allow",
+      "Action": "dynamodb:PutItem",
+      "Resource": "arn:aws:dynamodb:eu-west-2:###:table/test"
+    }
+  ]
+```
+
+- Trust policy
+
+A trust policy defines what actions your role can assume. The trust policy allows Lambda to use the role's permissions by giving the service principal lambda.amazonaws.com permission to call the AWS Security Token Service (AWS STS) AssumeRole action.
+
+```json
+{
+  "Effect": "Allow",
+  "Action": "sts:AssumeRole",
+  "Principal": {
+    "Service": "lambda.amazonaws.com"
+  }
+}
+```
+
+### Resource-based policy
+
+A resource policy (also called a function policy) tells the Lambda service which principals have permission to invoke the Lambda function. An AWS principal may be a user, role, another AWS service, or another AWS account.
+
+### Policy comparison
+
+- Resource-based policy
+
+  Lambda resource-based policy
+
+  - Associated with a "push" event srouce such as Amazon API gateway
+  - Created when you add a trigger to a Lambda function
+  - Allows the event source to take the lambda:invokeFunction action
+
+- Execution role
+
+  IAM execution role
+
+  - Role selected or created when you create a lambda function
+  - IAM Policy includes actions you can take with the resource
+  - Trust policy that allows Lambda to AssumeRole
+  - Creator must have permission for iam:PassRole
+
