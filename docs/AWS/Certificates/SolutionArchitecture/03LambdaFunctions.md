@@ -209,3 +209,219 @@ A resource policy (also called a function policy) tells the Lambda service which
   - Trust policy that allows Lambda to AssumeRole
   - Creator must have permission for iam:PassRole
 
+- Example resource policy
+
+```json
+"Version" : "2012-10-17",
+"Id" : "test-policy",
+"Statement" : [
+  {
+    "Sid": "lambdaInvoke",
+    "Effect": "Allow",
+    "Principal": {
+      "Service": "s3.amazonaws.com"
+    },
+    "Action": "lambda:InvokeFunction",
+    "Resource": "arn:aws:lambda:eu-west-2:###:function:test",
+    "Condition": {
+      "ArnLike": {
+        "AWS:SourceArn": "arn:aws:s3:::test-bucket"
+      }
+    }
+  }
+]
+```
+
+### Accessing resources in a VPC
+
+Enabling your Lambda function to access resources inside your virtual private cloud (VPC) requires additional VPC-specific configuration information, such as VPC `subnet IDs` and `security group IDs`.
+
+- Lambda and AWS PrivateLink
+
+  To establish a private connection between your VPC and Lambda, create an interface VPC endpoint.
+
+## Authoring AWS Lambda functions
+
+- learn best practice for writing Lambda function code.
+
+### Use your own code
+
+- Supported languages
+
+  Node.js, C#...
+
+- Start with the handler method
+
+  The Lambda function handler is the method in your function code that processes events.
+
+  The handler method takes two objects
+
+  - Event Ojbect
+
+    - required
+    - when lambda invoked, `event object` will be provide to handler
+    - event object is different
+    - inlcude metadata your lambda function needs
+
+  - Context Object (optional)
+
+    - allow you function code to interact with the lambda execution environment.
+    - The content and structure based on language runtime, minimum element contains:
+      - `AWS RequestID`
+      - `Runtime`
+      - `Logging`
+
+- Design best practices
+
+  1. Separate business logic
+
+  Separate your core business logic from the handler event.
+  ![separate business logic](image-26.png)
+
+  2. Write modular functions
+
+  Module functions will reduce the amount of time that it takes for your deployment package to be downloaded and unpacked before invocation.
+
+  ![module functions](image-27.png)
+
+  3. Treat functions as stateless
+
+  No information about state should be saved within the context of the function itself.
+
+  Consider one of the following options for storing state data:
+
+  - DynamoDB
+  - ElasticCache
+  - S3
+
+  4. Only include what you need
+
+  Minimize both your deployment package dependencies and its size.
+  This can have a significant impact on the startup time for your function.
+
+- Best parctices for writing code
+
+  1. Include logging statements
+
+     Lambda functions can and should include logging statements, which are written to CloudWatch.
+
+     example
+
+     ```python
+     import os
+     import logging
+     logger = logging,getLogger()
+     logger.setLevel(logging.INFO)
+
+     def lambda_handler(event, context):
+       logger.info('## ENVIRONMENT VARIABLES')
+       logger.info(os.environ)
+       logger.info(event)
+     ```
+
+  2. Use return coding
+
+     Functions must give Lambda information about the results of their actions.
+
+     ```js
+     exports.handler = async function (event, context) {
+       console.log("EVENT: \n" + JSON.stringify(event, null, 2));
+       return context.logStreamName;
+     };
+     ```
+
+  3. Provide environment variables
+
+     - Take advantage of environment variables for operational parameters.
+
+     - You can use these parameters to pass updated configuration settings without changes to the code itself.
+
+     - You can also use environment variables to store sensitive information required by the function.
+
+  4. Add secret and refernce data
+
+     AWS Secrets Manager helps you organize and manage important configuration data such as credentials, passwords, and license keys.
+
+  5. Avoid recursive code
+
+     Avoid a situation in which a function calls itself.
+
+     Recursive code could lead to uncontrolled scaling of invocations that would make you lose control of your concurrency.
+
+  6. Gather metrics with Amazon `CloudWatch`
+
+     The CloudWatch embedded metric format (EMF) is a JSON specification used to instruct CloudWatch Logs to automatically extract metric values embedded in structured log events.
+
+  7. Reuse execution context
+
+     1. Store dependencies locally.
+
+     2. Limit re-initialization of variables.
+
+     3. Reuse existing connections.
+
+     4. Use tmp space as transient cache.
+
+     5. Check that background processes have completed.
+
+### Building Lambda functions
+
+- Lambda console editor
+
+  You can author functions within the Lambda console, with an IDE toolkit, using command line tools, or using the AWS SDKs.
+
+- Deployment packages
+
+  Your Lambda function's code consists of scripts or compiled programs and their dependencies.
+
+- Automate using tools
+
+  Serverless applications built using Lambda are a combination of Lambda functions, event sources, and other resources defined using the AWS Serverless Application Model (AWS SAM).
+
+### What is SAM
+
+AWS SAM is an open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings. With just a few lines per resource, you can define the application you want and model it using YAML. You provide AWS SAM with simplified instructions for your environment and during deployment AWS SAM transforms and expands the AWS SAM syntax into AWS CloudFormation syntax (a fully detailed CloudFormation template).
+
+![sam](image-28.png)
+
+- SAM prebuild policies
+  AWS SAM provides a number of predefined, commonly used templates that you can use to build for least privilege security access.
+
+- SAM CLI can test and deploy the lambda function
+
+  1. Invoke functions and run automated tests locally.
+  2. Generate sample event srouce payloads.
+  3. Run api gateway locally.
+  4. Debug code.
+  5. Review Lambda function logs.
+  6. Validate AWS SAM templates.
+
+  ![SAM CLI](image-29.png)
+
+- AWS SAM CLI
+
+  1. init
+
+     Initializes a serverless application.
+
+  2. local
+     Runs application locally
+
+  3. validate
+
+     Validates an AWS SAM template.
+
+  4. deploy
+
+     Deploys an sam application
+
+  5. build
+
+     Builds a serverless application and prepares it for subsequent steps in your workflow.
+
+- Serverless CI/CD pipeline
+
+  - CodeBuild - Automate the process of packaging code and run tests
+  - CodeDeploy - Use Version management options to ensure safe deployments.
+
+  ![CI/CD Serverless](image-30.png)
