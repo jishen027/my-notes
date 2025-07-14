@@ -425,3 +425,194 @@ AWS SAM is an open-source framework for building serverless applications. It pro
   - CodeDeploy - Use Version management options to ensure safe deployments.
 
   ![CI/CD Serverless](image-30.png)
+
+## Configuring your Lambda functions
+
+When building and testing a function, you must specify three primary configuration settings: memory, timeout, and concurrency.
+
+### Memory
+
+Up to 10 GB of memeory to a Lambda function.Lambda allocates CPU and other resources linearly in proportion to the amount of memory configured. Any increase in memory size triggers an equivalent increase in CPU available to your function.
+
+### Timeout
+
+The AWS Lambda timeout value dictates how long a function can run before Lambda terminates the Lambda function.
+
+### Lmabda billing costs
+
+With AWS Lambda, you pay only for what you use. You are charged based on the number of requests for your functions and the duration, the time it takes for your code to run. Lambda counts a request each time it starts running in response to an event notification or an invoke call, including test invokes from the console.
+
+### The balance between power and duration
+
+Depending on the function, you might find that the higher memory level might actually cost less because the function can complete much more quickly than at a lower memory configuration.
+
+![Balance between](image-31.png)
+
+### Concurrency and scaling
+
+Having more than one invocation running at the same time is the function's concurrency.
+
+#### Concurrency types
+
+- Unreserved concurrency
+
+  The amount of concurrency that is not allocated to any specific set of functions. The minimum is 100 unreserved concurrency. This allows functions that do not have any provisioned concurrency to still be able to run.
+
+- Reserved concurrency
+
+  Guarantees the maximum number of concurrent instances for the function.
+
+- Provisioned concurrency
+
+  Initializes a requested number of runtime environments so that they are prepared to respond immediately to your function's invocations. This option is used when you need high performance and low latency.
+
+#### Reasons for setting concurrency limits
+
+- Limit concurrency
+
+  - Limit costs
+  - Regulate how long it takes you to process a batch of events
+  - Match it with a downstream resource that cannot scale as quickly as Lambda
+
+- Reserve concurrency
+
+  - Ensure that you can handle peak expected volume for a critical function
+  - Address invocation errors
+
+### How concurrency bursts are managed
+
+A burst is when there is a sudden increase in the number of instances needed to fulfill the requested number of running functions.
+
+The burst quotas differ by region:
+
+- 3000 – US West (Oregon), US East (N. Virginia), Europe (Ireland)
+
+- 1000 – Asia Pacific (Tokyo), Europe (Frankfurt), US East (Ohio)
+
+- 500 – Other Regions
+
+### CloudWatch metrics for concurrency
+
+When your function finishes processing an event, Lambda sends metrics about the invocation to Amazon CloudWatch. You can build graphs and dashboards with these metrics in the CloudWatch console.
+
+- Two build-in Cloudwatch metrics
+
+  1. ConcurrentExecutions
+
+  2. UnreservedConcurrentExecutions
+
+### Testing Concurrency
+
+- Run performance test that simulate peak levels of invocations
+- Determine whether the existing backend can handler the speed of rquests sent to it.
+- Does the error handling work as expected.
+
+## Deploying and Testing Serverless Applications
+
+### Test and debug application
+
+![test and debug](image-32.png)
+
+### Ensures environmental parity
+
+![Ensures environmental parity](image-33.png)
+
+### Reduce risk using versions and aliases
+
+- Versioning
+
+  For example, you can publish a new version of a function for beta testing without affecting users of the stable production version. Lambda creates a new version of your function each time that you publish the function. The new version is a copy of the unpublished version of the function.
+
+- Publish
+
+  Publish makes a snapshot copy of $LATEST.
+
+  Enable versioning to create immutable snapshots of your function every time you publish it.
+
+  - Publish as many versions as you need.
+  - Each version results in a new sequential version number.
+  - Add the version number to the function ARN to reference it.
+  - The snapshot becomes the new version and is immutable.
+
+- Aliases
+
+  A Lambda alias is like a pointer to a specific function version. You can access the function version using the alias ARN. Each alias has a unique ARN. An alias can point only to a function version, not to another alias. You can update an alias to point to a new version of the function.
+
+### Test using alias routing
+
+You can also use routing configuration on an alias to send a portion of traffic to a second function version.For example, you can reduce the risk of deploying a new version by configuring the alias to send most of the traffic to the existing version and only a small percentage of traffic to the new version.
+
+You can point an alias to a maximum of two Lambda function versions. The versions must meet the following criteria:
+
+- Both versions must have the same runtime role.
+- Both versions must have the same dead-letter queue configuration, or no dead-letter queue configuration.
+- Both versions must be published. The alias cannot point to $LATEST.
+
+![test using alias routing](image-34.png)
+
+### Integrate with AWS CodeDeploy
+
+## Monitoring and Troubleshooting
+
+### Types of monitoring graphs
+
+- Number o requests
+- Invocation duration per request
+- Number of requests that result in an error
+
+Amazon CloudWatch provides built-in matrics:
+
+- Invocations
+- Duration
+- Errors
+- Throttles
+
+  The number of times that a process failed because of concurrency limits.
+
+- IteratorAge
+
+  Pertains to event source mappings that read from streams. The age of the last record in the event. The age is the amount of time between when the stream receives the record and when the event source mapping sends the event to the function.
+
+- DeadLetterErrors
+
+  For asynchronous invocation, this is the number of times Lambda attempts to send an event to a dead-letter queue but fails.
+
+- ConcurrentExecutions
+
+  The number of function instances that are processing events.
+
+  - UnreservedConcurrentExecutions – The number of events that are being processed by functions that don't have reserved concurrency.
+  - ProvisionedConcurrentExecutions – The number of function instances that are processing events on provisioned concurrency. For each invocation of an alias or version with provisioned concurrency, Lambda emits the current count.
+
+### Amazon CloudWatch Lambda Insights
+
+Amazon CloudWatch Lambda Insights is a monitoring and troubleshooting solution for serverless applications running on Lambda. Lambda Insights collects, aggregates, and summarizes system-level metrics. It also summarizes diagnostic information such as cold starts and Lambda worker shutdowns to help you isolate issues with your Lambda functions and resolve them quickly
+
+### Monitoring Lambda functions using AWS X-Ray
+
+You can use AWS X-Ray to visualize the components of your application, identify performance bottlenecks, and troubleshoot requests that resulted in an error. Your Lambda functions send trace data to X-Ray, and X-Ray processes the data to generate a service map and searchable trace summaries.
+
+AWS X-Ray records how the Lambda functions are running.
+
+- Turning performance
+- Identifying the call flow if Lambda functions and API calls
+- Tracing path and timing of an invocation to locate bottlenecks and failures
+
+### Additional monitoring and troubleshooting tools
+
+- AWS Cloudtrail
+
+  AWS CloudTrail helps audit your application by recording all the API actions made against the application. These logs can be exported to the analysis tool of your choice for additional analysis.
+
+  - The default Lambda CloudTrail logging is for control plane (management) events.
+  - Optional logging: CloudTrail also logs data events. You can turn on data event logging so that you log an event every time Lambda functions are invoked.
+
+  CloudTrail can be an important tool for auditing serverless deployments and rolling back unplanned deployments.
+
+- Dead-letter queues
+
+  Dead-letter queues help you capture application errors that must receive a response, such as an ecommerce application that processes orders. If an order fails, you cannot ignore that order error. You move that error into the dead-letter queue and manually look at the queue and fix the problems.
+
+  - Use dead-letter queues to analyze failures for follow-up or code corrections.
+  - Dead-letter queues are available for asynchronous and non-stream polling events.
+  - A dead-letter queue can be an Amazon Simple Notification Service (Amazon SNS) topic or an Amazon Simple Queue Service (Amazon SQS) queue.
