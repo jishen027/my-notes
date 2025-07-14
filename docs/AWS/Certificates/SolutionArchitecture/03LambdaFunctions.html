@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">03 AWS Lambda Functions | Docusaurus Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://jishen027.github.io/my-notes/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://jishen027.github.io/my-notes/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/03LambdaFunctions"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="03 AWS Lambda Functions | Docusaurus Notes"><meta data-rh="true" name="description" content="Introduce to Serverless"><meta data-rh="true" property="og:description" content="Introduce to Serverless"><link data-rh="true" rel="icon" href="/my-notes/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/03LambdaFunctions"><link data-rh="true" rel="alternate" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/03LambdaFunctions" hreflang="en"><link data-rh="true" rel="alternate" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/03LambdaFunctions" hreflang="x-default"><link rel="stylesheet" href="/my-notes/assets/css/styles.a0eaaa03.css">
-<script src="/my-notes/assets/js/runtime~main.7e37443c.js" defer="defer"></script>
+<script src="/my-notes/assets/js/runtime~main.a0b061ab.js" defer="defer"></script>
 <script src="/my-notes/assets/js/main.1877b101.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -412,6 +412,194 @@ Runs application locally</p>
 </ul>
 <p><img loading="lazy" alt="CI/CD Serverless" src="/my-notes/assets/images/image-30-5ff706cb292b9e0244006b18ee11129d.png" width="659" height="393" class="img_ev3q"></p>
 </li>
-</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/jishen027/my-notes/tree/main/docs/AWS/Certificates/SolutionArchitecture/03LambdaFunctions.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/02StorageService"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">02 Core AWS Storage Services</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/ExamPrepAssociate"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">AWS Solution Architecture Associate Exam Prep</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduce-to-serverless" class="table-of-contents__link toc-highlight">Introduce to Serverless</a></li><li><a href="#how-aws-lambda-works" class="table-of-contents__link toc-highlight">How AWS Lambda works</a><ul><li><a href="#invocation-models-for-running-lambda-functions" class="table-of-contents__link toc-highlight">Invocation models for running Lambda functions</a></li><li><a href="#invocation-model-error-behavior" class="table-of-contents__link toc-highlight">Invocation model error behavior</a></li><li><a href="#lambda-execution-environment" class="table-of-contents__link toc-highlight">Lambda execution environment</a></li><li><a href="#performance-optimizetion" class="table-of-contents__link toc-highlight">Performance optimizetion</a></li></ul></li><li><a href="#aws-lambda-function-permissions" class="table-of-contents__link toc-highlight">AWS Lambda Function Permissions</a><ul><li><a href="#execution-role" class="table-of-contents__link toc-highlight">Execution role</a></li><li><a href="#resource-based-policy" class="table-of-contents__link toc-highlight">Resource-based policy</a></li><li><a href="#policy-comparison" class="table-of-contents__link toc-highlight">Policy comparison</a></li><li><a href="#accessing-resources-in-a-vpc" class="table-of-contents__link toc-highlight">Accessing resources in a VPC</a></li></ul></li><li><a href="#authoring-aws-lambda-functions" class="table-of-contents__link toc-highlight">Authoring AWS Lambda functions</a><ul><li><a href="#use-your-own-code" class="table-of-contents__link toc-highlight">Use your own code</a></li><li><a href="#building-lambda-functions" class="table-of-contents__link toc-highlight">Building Lambda functions</a></li><li><a href="#what-is-sam" class="table-of-contents__link toc-highlight">What is SAM</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Jeb Lee's Docs, build with Docusaurus.</div></div></div></footer></div>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configuring-your-lambda-functions">Configuring your Lambda functions<a href="#configuring-your-lambda-functions" class="hash-link" aria-label="Direct link to Configuring your Lambda functions" title="Direct link to Configuring your Lambda functions">​</a></h2>
+<p>When building and testing a function, you must specify three primary configuration settings: memory, timeout, and concurrency.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="memory">Memory<a href="#memory" class="hash-link" aria-label="Direct link to Memory" title="Direct link to Memory">​</a></h3>
+<p>Up to 10 GB of memeory to a Lambda function.Lambda allocates CPU and other resources linearly in proportion to the amount of memory configured. Any increase in memory size triggers an equivalent increase in CPU available to your function.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="timeout">Timeout<a href="#timeout" class="hash-link" aria-label="Direct link to Timeout" title="Direct link to Timeout">​</a></h3>
+<p>The AWS Lambda timeout value dictates how long a function can run before Lambda terminates the Lambda function.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="lmabda-billing-costs">Lmabda billing costs<a href="#lmabda-billing-costs" class="hash-link" aria-label="Direct link to Lmabda billing costs" title="Direct link to Lmabda billing costs">​</a></h3>
+<p>With AWS Lambda, you pay only for what you use. You are charged based on the number of requests for your functions and the duration, the time it takes for your code to run. Lambda counts a request each time it starts running in response to an event notification or an invoke call, including test invokes from the console.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-balance-between-power-and-duration">The balance between power and duration<a href="#the-balance-between-power-and-duration" class="hash-link" aria-label="Direct link to The balance between power and duration" title="Direct link to The balance between power and duration">​</a></h3>
+<p>Depending on the function, you might find that the higher memory level might actually cost less because the function can complete much more quickly than at a lower memory configuration.</p>
+<p><img loading="lazy" alt="Balance between" src="/my-notes/assets/images/image-31-d77f4a82f5019a2ed03ce9d83af0110b.png" width="959" height="477" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="concurrency-and-scaling">Concurrency and scaling<a href="#concurrency-and-scaling" class="hash-link" aria-label="Direct link to Concurrency and scaling" title="Direct link to Concurrency and scaling">​</a></h3>
+<p>Having more than one invocation running at the same time is the function&#x27;s concurrency.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="concurrency-types">Concurrency types<a href="#concurrency-types" class="hash-link" aria-label="Direct link to Concurrency types" title="Direct link to Concurrency types">​</a></h4>
+<ul>
+<li>
+<p>Unreserved concurrency</p>
+<p>The amount of concurrency that is not allocated to any specific set of functions. The minimum is 100 unreserved concurrency. This allows functions that do not have any provisioned concurrency to still be able to run.</p>
+</li>
+<li>
+<p>Reserved concurrency</p>
+<p>Guarantees the maximum number of concurrent instances for the function.</p>
+</li>
+<li>
+<p>Provisioned concurrency</p>
+<p>Initializes a requested number of runtime environments so that they are prepared to respond immediately to your function&#x27;s invocations. This option is used when you need high performance and low latency.</p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="reasons-for-setting-concurrency-limits">Reasons for setting concurrency limits<a href="#reasons-for-setting-concurrency-limits" class="hash-link" aria-label="Direct link to Reasons for setting concurrency limits" title="Direct link to Reasons for setting concurrency limits">​</a></h4>
+<ul>
+<li>
+<p>Limit concurrency</p>
+<ul>
+<li>Limit costs</li>
+<li>Regulate how long it takes you to process a batch of events</li>
+<li>Match it with a downstream resource that cannot scale as quickly as Lambda</li>
+</ul>
+</li>
+<li>
+<p>Reserve concurrency</p>
+<ul>
+<li>Ensure that you can handle peak expected volume for a critical function</li>
+<li>Address invocation errors</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-concurrency-bursts-are-managed">How concurrency bursts are managed<a href="#how-concurrency-bursts-are-managed" class="hash-link" aria-label="Direct link to How concurrency bursts are managed" title="Direct link to How concurrency bursts are managed">​</a></h3>
+<p>A burst is when there is a sudden increase in the number of instances needed to fulfill the requested number of running functions.</p>
+<p>The burst quotas differ by region:</p>
+<ul>
+<li>
+<p>3000 – US West (Oregon), US East (N. Virginia), Europe (Ireland)</p>
+</li>
+<li>
+<p>1000 – Asia Pacific (Tokyo), Europe (Frankfurt), US East (Ohio)</p>
+</li>
+<li>
+<p>500 – Other Regions</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cloudwatch-metrics-for-concurrency">CloudWatch metrics for concurrency<a href="#cloudwatch-metrics-for-concurrency" class="hash-link" aria-label="Direct link to CloudWatch metrics for concurrency" title="Direct link to CloudWatch metrics for concurrency">​</a></h3>
+<p>When your function finishes processing an event, Lambda sends metrics about the invocation to Amazon CloudWatch. You can build graphs and dashboards with these metrics in the CloudWatch console.</p>
+<ul>
+<li>
+<p>Two build-in Cloudwatch metrics</p>
+<ol>
+<li>
+<p>ConcurrentExecutions</p>
+</li>
+<li>
+<p>UnreservedConcurrentExecutions</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="testing-concurrency">Testing Concurrency<a href="#testing-concurrency" class="hash-link" aria-label="Direct link to Testing Concurrency" title="Direct link to Testing Concurrency">​</a></h3>
+<ul>
+<li>Run performance test that simulate peak levels of invocations</li>
+<li>Determine whether the existing backend can handler the speed of rquests sent to it.</li>
+<li>Does the error handling work as expected.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deploying-and-testing-serverless-applications">Deploying and Testing Serverless Applications<a href="#deploying-and-testing-serverless-applications" class="hash-link" aria-label="Direct link to Deploying and Testing Serverless Applications" title="Direct link to Deploying and Testing Serverless Applications">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="test-and-debug-application">Test and debug application<a href="#test-and-debug-application" class="hash-link" aria-label="Direct link to Test and debug application" title="Direct link to Test and debug application">​</a></h3>
+<p><img loading="lazy" alt="test and debug" src="/my-notes/assets/images/image-32-ed4ed2da3bd9e79014012ce3b35f7195.png" width="490" height="232" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ensures-environmental-parity">Ensures environmental parity<a href="#ensures-environmental-parity" class="hash-link" aria-label="Direct link to Ensures environmental parity" title="Direct link to Ensures environmental parity">​</a></h3>
+<p><img loading="lazy" alt="Ensures environmental parity" src="/my-notes/assets/images/image-33-cdcc9ee46ba7b4b1646b6676534acf77.png" width="561" height="588" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="reduce-risk-using-versions-and-aliases">Reduce risk using versions and aliases<a href="#reduce-risk-using-versions-and-aliases" class="hash-link" aria-label="Direct link to Reduce risk using versions and aliases" title="Direct link to Reduce risk using versions and aliases">​</a></h3>
+<ul>
+<li>
+<p>Versioning</p>
+<p>For example, you can publish a new version of a function for beta testing without affecting users of the stable production version. Lambda creates a new version of your function each time that you publish the function. The new version is a copy of the unpublished version of the function.</p>
+</li>
+<li>
+<p>Publish</p>
+<p>Publish makes a snapshot copy of $LATEST.</p>
+<p>Enable versioning to create immutable snapshots of your function every time you publish it.</p>
+<ul>
+<li>Publish as many versions as you need.</li>
+<li>Each version results in a new sequential version number.</li>
+<li>Add the version number to the function ARN to reference it.</li>
+<li>The snapshot becomes the new version and is immutable.</li>
+</ul>
+</li>
+<li>
+<p>Aliases</p>
+<p>A Lambda alias is like a pointer to a specific function version. You can access the function version using the alias ARN. Each alias has a unique ARN. An alias can point only to a function version, not to another alias. You can update an alias to point to a new version of the function.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="test-using-alias-routing">Test using alias routing<a href="#test-using-alias-routing" class="hash-link" aria-label="Direct link to Test using alias routing" title="Direct link to Test using alias routing">​</a></h3>
+<p>You can also use routing configuration on an alias to send a portion of traffic to a second function version.For example, you can reduce the risk of deploying a new version by configuring the alias to send most of the traffic to the existing version and only a small percentage of traffic to the new version.</p>
+<p>You can point an alias to a maximum of two Lambda function versions. The versions must meet the following criteria:</p>
+<ul>
+<li>Both versions must have the same runtime role.</li>
+<li>Both versions must have the same dead-letter queue configuration, or no dead-letter queue configuration.</li>
+<li>Both versions must be published. The alias cannot point to $LATEST.</li>
+</ul>
+<p><img loading="lazy" alt="test using alias routing" src="/my-notes/assets/images/image-34-6de7fe6ffcac2a4c8953c68f5c2eba0c.png" width="974" height="235" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="integrate-with-aws-codedeploy">Integrate with AWS CodeDeploy<a href="#integrate-with-aws-codedeploy" class="hash-link" aria-label="Direct link to Integrate with AWS CodeDeploy" title="Direct link to Integrate with AWS CodeDeploy">​</a></h3>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="monitoring-and-troubleshooting">Monitoring and Troubleshooting<a href="#monitoring-and-troubleshooting" class="hash-link" aria-label="Direct link to Monitoring and Troubleshooting" title="Direct link to Monitoring and Troubleshooting">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="types-of-monitoring-graphs">Types of monitoring graphs<a href="#types-of-monitoring-graphs" class="hash-link" aria-label="Direct link to Types of monitoring graphs" title="Direct link to Types of monitoring graphs">​</a></h3>
+<ul>
+<li>Number o requests</li>
+<li>Invocation duration per request</li>
+<li>Number of requests that result in an error</li>
+</ul>
+<p>Amazon CloudWatch provides built-in matrics:</p>
+<ul>
+<li>
+<p>Invocations</p>
+</li>
+<li>
+<p>Duration</p>
+</li>
+<li>
+<p>Errors</p>
+</li>
+<li>
+<p>Throttles</p>
+<p>The number of times that a process failed because of concurrency limits.</p>
+</li>
+<li>
+<p>IteratorAge</p>
+<p>Pertains to event source mappings that read from streams. The age of the last record in the event. The age is the amount of time between when the stream receives the record and when the event source mapping sends the event to the function.</p>
+</li>
+<li>
+<p>DeadLetterErrors</p>
+<p>For asynchronous invocation, this is the number of times Lambda attempts to send an event to a dead-letter queue but fails.</p>
+</li>
+<li>
+<p>ConcurrentExecutions</p>
+<p>The number of function instances that are processing events.</p>
+<ul>
+<li>UnreservedConcurrentExecutions – The number of events that are being processed by functions that don&#x27;t have reserved concurrency.</li>
+<li>ProvisionedConcurrentExecutions – The number of function instances that are processing events on provisioned concurrency. For each invocation of an alias or version with provisioned concurrency, Lambda emits the current count.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="amazon-cloudwatch-lambda-insights">Amazon CloudWatch Lambda Insights<a href="#amazon-cloudwatch-lambda-insights" class="hash-link" aria-label="Direct link to Amazon CloudWatch Lambda Insights" title="Direct link to Amazon CloudWatch Lambda Insights">​</a></h3>
+<p>Amazon CloudWatch Lambda Insights is a monitoring and troubleshooting solution for serverless applications running on Lambda. Lambda Insights collects, aggregates, and summarizes system-level metrics. It also summarizes diagnostic information such as cold starts and Lambda worker shutdowns to help you isolate issues with your Lambda functions and resolve them quickly</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="monitoring-lambda-functions-using-aws-x-ray">Monitoring Lambda functions using AWS X-Ray<a href="#monitoring-lambda-functions-using-aws-x-ray" class="hash-link" aria-label="Direct link to Monitoring Lambda functions using AWS X-Ray" title="Direct link to Monitoring Lambda functions using AWS X-Ray">​</a></h3>
+<p>You can use AWS X-Ray to visualize the components of your application, identify performance bottlenecks, and troubleshoot requests that resulted in an error. Your Lambda functions send trace data to X-Ray, and X-Ray processes the data to generate a service map and searchable trace summaries.</p>
+<p>AWS X-Ray records how the Lambda functions are running.</p>
+<ul>
+<li>Turning performance</li>
+<li>Identifying the call flow if Lambda functions and API calls</li>
+<li>Tracing path and timing of an invocation to locate bottlenecks and failures</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="additional-monitoring-and-troubleshooting-tools">Additional monitoring and troubleshooting tools<a href="#additional-monitoring-and-troubleshooting-tools" class="hash-link" aria-label="Direct link to Additional monitoring and troubleshooting tools" title="Direct link to Additional monitoring and troubleshooting tools">​</a></h3>
+<ul>
+<li>
+<p>AWS Cloudtrail</p>
+<p>AWS CloudTrail helps audit your application by recording all the API actions made against the application. These logs can be exported to the analysis tool of your choice for additional analysis.</p>
+<ul>
+<li>The default Lambda CloudTrail logging is for control plane (management) events.</li>
+<li>Optional logging: CloudTrail also logs data events. You can turn on data event logging so that you log an event every time Lambda functions are invoked.</li>
+</ul>
+<p>CloudTrail can be an important tool for auditing serverless deployments and rolling back unplanned deployments.</p>
+</li>
+<li>
+<p>Dead-letter queues</p>
+<p>Dead-letter queues help you capture application errors that must receive a response, such as an ecommerce application that processes orders. If an order fails, you cannot ignore that order error. You move that error into the dead-letter queue and manually look at the queue and fix the problems.</p>
+<ul>
+<li>Use dead-letter queues to analyze failures for follow-up or code corrections.</li>
+<li>Dead-letter queues are available for asynchronous and non-stream polling events.</li>
+<li>A dead-letter queue can be an Amazon Simple Notification Service (Amazon SNS) topic or an Amazon Simple Queue Service (Amazon SQS) queue.</li>
+</ul>
+</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/jishen027/my-notes/tree/main/docs/AWS/Certificates/SolutionArchitecture/03LambdaFunctions.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/02StorageService"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">02 Core AWS Storage Services</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/ExamPrepAssociate"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">AWS Solution Architecture Associate Exam Prep</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduce-to-serverless" class="table-of-contents__link toc-highlight">Introduce to Serverless</a></li><li><a href="#how-aws-lambda-works" class="table-of-contents__link toc-highlight">How AWS Lambda works</a><ul><li><a href="#invocation-models-for-running-lambda-functions" class="table-of-contents__link toc-highlight">Invocation models for running Lambda functions</a></li><li><a href="#invocation-model-error-behavior" class="table-of-contents__link toc-highlight">Invocation model error behavior</a></li><li><a href="#lambda-execution-environment" class="table-of-contents__link toc-highlight">Lambda execution environment</a></li><li><a href="#performance-optimizetion" class="table-of-contents__link toc-highlight">Performance optimizetion</a></li></ul></li><li><a href="#aws-lambda-function-permissions" class="table-of-contents__link toc-highlight">AWS Lambda Function Permissions</a><ul><li><a href="#execution-role" class="table-of-contents__link toc-highlight">Execution role</a></li><li><a href="#resource-based-policy" class="table-of-contents__link toc-highlight">Resource-based policy</a></li><li><a href="#policy-comparison" class="table-of-contents__link toc-highlight">Policy comparison</a></li><li><a href="#accessing-resources-in-a-vpc" class="table-of-contents__link toc-highlight">Accessing resources in a VPC</a></li></ul></li><li><a href="#authoring-aws-lambda-functions" class="table-of-contents__link toc-highlight">Authoring AWS Lambda functions</a><ul><li><a href="#use-your-own-code" class="table-of-contents__link toc-highlight">Use your own code</a></li><li><a href="#building-lambda-functions" class="table-of-contents__link toc-highlight">Building Lambda functions</a></li><li><a href="#what-is-sam" class="table-of-contents__link toc-highlight">What is SAM</a></li></ul></li><li><a href="#configuring-your-lambda-functions" class="table-of-contents__link toc-highlight">Configuring your Lambda functions</a><ul><li><a href="#memory" class="table-of-contents__link toc-highlight">Memory</a></li><li><a href="#timeout" class="table-of-contents__link toc-highlight">Timeout</a></li><li><a href="#lmabda-billing-costs" class="table-of-contents__link toc-highlight">Lmabda billing costs</a></li><li><a href="#the-balance-between-power-and-duration" class="table-of-contents__link toc-highlight">The balance between power and duration</a></li><li><a href="#concurrency-and-scaling" class="table-of-contents__link toc-highlight">Concurrency and scaling</a></li><li><a href="#how-concurrency-bursts-are-managed" class="table-of-contents__link toc-highlight">How concurrency bursts are managed</a></li><li><a href="#cloudwatch-metrics-for-concurrency" class="table-of-contents__link toc-highlight">CloudWatch metrics for concurrency</a></li><li><a href="#testing-concurrency" class="table-of-contents__link toc-highlight">Testing Concurrency</a></li></ul></li><li><a href="#deploying-and-testing-serverless-applications" class="table-of-contents__link toc-highlight">Deploying and Testing Serverless Applications</a><ul><li><a href="#test-and-debug-application" class="table-of-contents__link toc-highlight">Test and debug application</a></li><li><a href="#ensures-environmental-parity" class="table-of-contents__link toc-highlight">Ensures environmental parity</a></li><li><a href="#reduce-risk-using-versions-and-aliases" class="table-of-contents__link toc-highlight">Reduce risk using versions and aliases</a></li><li><a href="#test-using-alias-routing" class="table-of-contents__link toc-highlight">Test using alias routing</a></li><li><a href="#integrate-with-aws-codedeploy" class="table-of-contents__link toc-highlight">Integrate with AWS CodeDeploy</a></li></ul></li><li><a href="#monitoring-and-troubleshooting" class="table-of-contents__link toc-highlight">Monitoring and Troubleshooting</a><ul><li><a href="#types-of-monitoring-graphs" class="table-of-contents__link toc-highlight">Types of monitoring graphs</a></li><li><a href="#amazon-cloudwatch-lambda-insights" class="table-of-contents__link toc-highlight">Amazon CloudWatch Lambda Insights</a></li><li><a href="#monitoring-lambda-functions-using-aws-x-ray" class="table-of-contents__link toc-highlight">Monitoring Lambda functions using AWS X-Ray</a></li><li><a href="#additional-monitoring-and-troubleshooting-tools" class="table-of-contents__link toc-highlight">Additional monitoring and troubleshooting tools</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Jeb Lee's Docs, build with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
