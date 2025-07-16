@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">Architecting Serverless Application | Docusaurus Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://jishen027.github.io/my-notes/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://jishen027.github.io/my-notes/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/04ArchitectingServerlessApplication"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Architecting Serverless Application | Docusaurus Notes"><meta data-rh="true" name="description" content="Migrating to Serverless"><meta data-rh="true" property="og:description" content="Migrating to Serverless"><link data-rh="true" rel="icon" href="/my-notes/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/04ArchitectingServerlessApplication"><link data-rh="true" rel="alternate" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/04ArchitectingServerlessApplication" hreflang="en"><link data-rh="true" rel="alternate" href="https://jishen027.github.io/my-notes/docs/AWS/Certificates/SolutionArchitecture/04ArchitectingServerlessApplication" hreflang="x-default"><link rel="stylesheet" href="/my-notes/assets/css/styles.a0eaaa03.css">
-<script src="/my-notes/assets/js/runtime~main.1953ef30.js" defer="defer"></script>
+<script src="/my-notes/assets/js/runtime~main.a6a43dbd.js" defer="defer"></script>
 <script src="/my-notes/assets/js/main.56506142.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -93,6 +93,131 @@
 </ol>
 <p>You also need to consider the business value of the increased speed and agility serverless gives you.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="choosing-compute-services-and-data-stores">Choosing Compute Services and Data Stores<a href="#choosing-compute-services-and-data-stores" class="hash-link" aria-label="Direct link to Choosing Compute Services and Data Stores" title="Direct link to Choosing Compute Services and Data Stores">​</a></h2>
-<p>Your goal should be to use the most optimized compute for each workload and use case.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/jishen027/my-notes/tree/main/docs/AWS/Certificates/SolutionArchitecture/04ArchitectingServerlessApplication.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/03LambdaFunctions"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">03 AWS Lambda Functions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/ExamPrepAssociate"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">AWS Solution Architecture Associate Exam Prep</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#migrating-to-serverless" class="table-of-contents__link toc-highlight">Migrating to Serverless</a><ul><li><a href="#migration-patterns" class="table-of-contents__link toc-highlight">Migration patterns</a></li><li><a href="#migration-considerations" class="table-of-contents__link toc-highlight">Migration considerations</a></li></ul></li><li><a href="#choosing-compute-services-and-data-stores" class="table-of-contents__link toc-highlight">Choosing Compute Services and Data Stores</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Jeb Lee's Docs, build with Docusaurus.</div></div></div></footer></div>
+<p>Your goal should be to use the most optimized compute for each workload and use case.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="use-aws-fargate-and-aws-lambda-function-for-serverless-compute">Use AWS Fargate and AWS Lambda function for serverless compute<a href="#use-aws-fargate-and-aws-lambda-function-for-serverless-compute" class="hash-link" aria-label="Direct link to Use AWS Fargate and AWS Lambda function for serverless compute" title="Direct link to Use AWS Fargate and AWS Lambda function for serverless compute">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="considerations-for-choosing-fargate-or-lambda-for-serverless-compute">Considerations for choosing Fargate or Lambda for serverless compute<a href="#considerations-for-choosing-fargate-or-lambda-for-serverless-compute" class="hash-link" aria-label="Direct link to Considerations for choosing Fargate or Lambda for serverless compute" title="Direct link to Considerations for choosing Fargate or Lambda for serverless compute">​</a></h4>
+<ol>
+<li>AWS Fargate</li>
+</ol>
+<p>When selecting to use either Fargate or Lambda for your serverless compute, consider the differences between the two and the needs of your workload.</p>
+<ul>
+<li>Lift and shift with minimal rework</li>
+<li>Longer-running processes or larger deployment packages</li>
+<li>Predictable, consistent workload</li>
+<li>Need more than 3 GB of memory</li>
+<li>Application with a non-HTTP/S listener</li>
+<li>Run side cars with your service(agents only supported as side cars)</li>
+<li>Container image portability with Docker runtime.</li>
+</ul>
+<ol start="2">
+<li>AWS Lambda</li>
+</ol>
+<ul>
+<li>Task that run less than 15 minutes</li>
+<li>Spiky, unpredictable workloads</li>
+<li>Unkonwn demand</li>
+<li>Lighter-weight, application-focused stateless computing</li>
+<li>Simplified IT automation</li>
+<li>Real-time data processing</li>
+<li>Reduced complexity for development and operations</li>
+</ul>
+<p>You might also find that using a combination of Lambda and Fargate makes sense within your application.For example, if you have a component that runs on a Docker image, you might run it on Fargate and orchestrate it from an AWS Step Functions task.</p>
+<p>It&#x27;s critical to separate and model your data stores into transactional compared to query needs. Use the concepts expressed in the CQRS pattern to choose a data store designed for the type of work the database needs to do.</p>
+<ol>
+<li>Amazon S3</li>
+</ol>
+<ul>
+<li>Data lakes</li>
+<li>Economical state store</li>
+<li>Claim-check pattern</li>
+<li>Filter data retrieved by Lambda(S3 Select)</li>
+</ul>
+<ol start="2">
+<li>Amazon DynamoDB</li>
+</ol>
+<ul>
+<li>Key-Value data store with millisecond response time</li>
+<li>Capture changes with Amazon DynamoDB Streams and index to other data stores</li>
+</ul>
+<ol start="3">
+<li>Amazon ElastiCache for Redis</li>
+</ol>
+<ul>
+<li>Well suited for things like realtime leaderboards</li>
+<li>in-memory data store with sub-millisecond read and write latency</li>
+</ul>
+<ol start="5">
+<li>Amazon Quantum Ledger Database</li>
+</ol>
+<ul>
+<li>Model state changes in cryptographically provable manner</li>
+<li>Distributed ledger</li>
+</ul>
+<ol start="6">
+<li>Amazon Aurora</li>
+</ol>
+<ul>
+<li>High-volume, high-throughput and highly parallelized transactional data</li>
+<li>MySQL and Postgres-compatible relational database built for faster performance at lower costs.</li>
+<li>Aurora Serverless automatically starts up, scale, and shuts down based on traffic.</li>
+</ul>
+<ol start="7">
+<li>Amazon Relational Database Services(Amazon RDS)</li>
+</ol>
+<ul>
+<li>Run familiar database engines with less administration</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="application-architecture-patterns">Application Architecture Patterns<a href="#application-architecture-patterns" class="hash-link" aria-label="Direct link to Application Architecture Patterns" title="Direct link to Application Architecture Patterns">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="serverless-it-automation">Serverless IT automation<a href="#serverless-it-automation" class="hash-link" aria-label="Direct link to Serverless IT automation" title="Direct link to Serverless IT automation">​</a></h3>
+<p>IT automation is often one of the first places organizations introduce serverless components. It can give you a quick win with very low risk.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-automate-response-to-configuration-changes">Example: Automate response to configuration changes<a href="#example-automate-response-to-configuration-changes" class="hash-link" aria-label="Direct link to Example: Automate response to configuration changes" title="Direct link to Example: Automate response to configuration changes">​</a></h4>
+<ol>
+<li>CloudWatch event for security group change</li>
+</ol>
+<p>A CloudWatch eventis fired off whenever someone modifies a security group.</p>
+<ol start="2">
+<li>Lambda function evaluates the change</li>
+</ol>
+<p>The CloudWatch event triggers a Lambda function through AWS Config that has custom code to review a list of wathc security group rules are allowed or denied.</p>
+<p>If the update is not allowed, the function deletes the rule and uses Amazon SNS to Send an Email alert.</p>
+<p><img loading="lazy" alt="IT automation" src="/my-notes/assets/images/image-37-c6e17d1b82b1ab885bd11df4583fec5a.png" width="733" height="388" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="serverless-web-application">Serverless web application<a href="#serverless-web-application" class="hash-link" aria-label="Direct link to Serverless web application" title="Direct link to Serverless web application">​</a></h3>
+<p>A common event-driven pattern forms the basic backbone of a serverless web application architecture using Amazon API Gateway to handle HTTP requests, Lambda to provide the application layer, and Amazon DynamoDB to provide database functionality.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example-web-application">Example: Web application<a href="#example-web-application" class="hash-link" aria-label="Direct link to Example: Web application" title="Direct link to Example: Web application">​</a></h4>
+<ol>
+<li>Start with the basic pattern</li>
+</ol>
+<p>When a request comes in, API Gateway send it to Amazon SQS and gets a message ID back, which the client can use to track the message.</p>
+<p>The message is stored durably on the queue and the Lambda server polls the queue. If Lambda find new messages on the queue, it invokes the lambda fucntion using the message as a parameter.</p>
+<ol start="2">
+<li>Authentication</li>
+</ol>
+<p>You can use Amazon Cognito for sign-up and sign-in functionality.</p>
+<ol start="3">
+<li>Amazon S3 and CloudFront serve static assets</li>
+</ol>
+<p>Add an S3 bucket to host static assets for the website and CloudFront distribution to serve assets to geographically dispersed consumer.</p>
+<p>You can adapt this architecture for single page web application by makeing use of S3 object versioning, Cloud Front cache expiration, and fine-tuned content time to live settings.</p>
+<p><img loading="lazy" alt="web application" src="/my-notes/assets/images/image-38-5cac797550f7b38142ab464f1ff8390d.png" width="714" height="364" class="img_ev3q"></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="example--mobile-backend">Example : Mobile backend<a href="#example--mobile-backend" class="hash-link" aria-label="Direct link to Example : Mobile backend" title="Direct link to Example : Mobile backend">​</a></h4>
+<ol>
+<li>AWS Appsync provides a single endpoint</li>
+</ol>
+<p>AWS AppSync provides one endpoint to the mobile application, but then spans out to interact with lots of backend services.</p>
+<p>User interact with the backend through GraphQL operations against AWS AppSync and AWS service APIs.</p>
+<p>AWS AppSync manages GraphQL HTTP requests and responses.</p>
+<ol start="2">
+<li>Amazon Cognito lets users leverage social identities.</li>
+</ol>
+<p>Amazon Cognito provides user management and acts as an identity provider for the mobile application.</p>
+<ol start="3">
+<li>Amazon Elasticsearch Service for search and analytics</li>
+</ol>
+<p>DynamoDB Streams indexes relevant data to Amazon Elasticsearch Service(Amazon ES) through a Lambda function.</p>
+<p>You can use Amazon ES for both search engine and for analytics.</p>
+<ol start="4">
+<li>Amazon Pinpoint for analytics and targeted communications</li>
+</ol>
+<p>Amazon Pinpoint captures analytics data from clients and also sends targeted texts or emails based on user data.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/jishen027/my-notes/tree/main/docs/AWS/Certificates/SolutionArchitecture/04ArchitectingServerlessApplication.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/03LambdaFunctions"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">03 AWS Lambda Functions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-notes/docs/AWS/Certificates/SolutionArchitecture/ExamPrepAssociate"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">AWS Solution Architecture Associate Exam Prep</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#migrating-to-serverless" class="table-of-contents__link toc-highlight">Migrating to Serverless</a><ul><li><a href="#migration-patterns" class="table-of-contents__link toc-highlight">Migration patterns</a></li><li><a href="#migration-considerations" class="table-of-contents__link toc-highlight">Migration considerations</a></li></ul></li><li><a href="#choosing-compute-services-and-data-stores" class="table-of-contents__link toc-highlight">Choosing Compute Services and Data Stores</a><ul><li><a href="#use-aws-fargate-and-aws-lambda-function-for-serverless-compute" class="table-of-contents__link toc-highlight">Use AWS Fargate and AWS Lambda function for serverless compute</a></li></ul></li><li><a href="#application-architecture-patterns" class="table-of-contents__link toc-highlight">Application Architecture Patterns</a><ul><li><a href="#serverless-it-automation" class="table-of-contents__link toc-highlight">Serverless IT automation</a></li><li><a href="#serverless-web-application" class="table-of-contents__link toc-highlight">Serverless web application</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Jeb Lee's Docs, build with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
