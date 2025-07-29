@@ -1,4 +1,4 @@
-# Architecting Serverless Application
+# 04 Architecting Serverless Application
 
 ## Migrating to Serverless
 
