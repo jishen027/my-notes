@@ -1,6 +1,6 @@
-# Three Way to Authenticate with AWS IoT Core
+# Three Ways to Authenticate with AWS IoT Core
 
-If you are working with AWS IoT Core, you will need to authenticate your service tp access the AWS IoT Core. There are three ways to authenticate with AWS IoT Core:
+If you are working with AWS IoT Core, you will need to authenticate your service to access the AWS IoT Core. There are three ways to authenticate with AWS IoT Core:
 
 ```python
 # Create a thing using terraform

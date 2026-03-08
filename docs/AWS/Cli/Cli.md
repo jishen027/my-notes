@@ -1,12 +1,12 @@
-# AWS Cli
+# AWS CLI
 
-## Configuration aws cli profile
+## Configure AWS CLI Profile
 
 ```bash 
 aws configure --profile <profile_name>
 ```
 
-## List all profiles
+## List All Profiles
 
 ```bash
 aws configure list-profiles

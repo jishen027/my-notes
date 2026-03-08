@@ -2,27 +2,27 @@
 
 ## IoT Services
 
-- Annlytics
+- **Analytics**
   - IoT SiteWise
   - IoT Events
   - IoT Analytics
   - IoT TwinMaker
 
-- Control services
+- **Control Services**
   - IoT Core
   - IoT Device Defender
   - IoT Device Management
   - IoT Things Graph
 
-- Device software
+- **Device Software**
   - FreeRTOS
   - Greengrass
   - IoT Device SDK
   - IoT Device Tester
 
-## Oerview
+## Overview
 
-![alt text](image-1.png)
+![Overview](image-1.png)
 
 ## Message Broker
 

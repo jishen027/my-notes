@@ -1,5 +1,7 @@
 # Amplify
 
-## Error: cannot update data model when using Amplify Studio, click deploy shows success but no changes are made
+## Error: Cannot update data model when using Amplify Studio
 
-Remove the deployment-status.json file from s3 bucket, then redeploy the app.
+**Issue**: Clicking deploy shows success but no changes are made.
+
+**Solution**: Remove the `deployment-status.json` file from the S3 bucket, then redeploy the app.
